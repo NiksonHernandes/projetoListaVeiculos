@@ -1,0 +1,17 @@
+<h1>Lista de todos os veículos da API </h1> 
+
+<table *ngIf="veiculos">
+    <thead>
+        <td>Id</td>
+        <td>Nome</td>
+        <td>Tipo</td>
+        <td>Opções</td>
+    </thead>
+    <tbody>
+        <tr *ngFor="let veiculo of veiculos">
+            <td>{{veiculo.id}}</td>
+            <td>{{veiculo.nome}}</td>
+            <td>{{veiculo.tipo}}</td>
+        </tr>
+    </tbody>
+</table>

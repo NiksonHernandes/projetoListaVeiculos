@@ -1,0 +1,49 @@
+<button class="btn btn-lg btn-outline-primary mb-2" (click)="openModal(content)" id="btnOpenModal">Adicionar
+    veiculo</button>
+
+<ng-template #modalAlert class="mb-0">
+    <p class="mb-0">
+        <ngb-alert [dismissible]="false" type="success" *ngIf="successMessage" class="mb-0"> Cadastrado com sucesso!
+        </ngb-alert>
+    </p>
+</ng-template>
+
+<ng-template #content let-modal>
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Adicionar veiculo</h4>
+        <button class="close" aria-label="Close" type="button" (click)="modal.dismiss()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <form (ngSubmit)="criarVeiculo()" (ngSubmit)="openModalAlert(modalAlert)" #form="ngForm" class="was-validated">
+        <div class="modal-body">
+            <div class="form-group">
+                <label class="col-sm-2 col-form-label mb-2">Nome:</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" name="nome" id="nome" placeholder="Insira o nome"
+                        [(ngModel)]="veiculoDTO.nome" required>
+
+                    <div class="valid-feedback">Campo válido.</div>
+                    <div class="invalid-feedback">Por favor, preencha este campo.</div>
+                </div>
+
+                <label class="col-sm-2 col-form-label">Tipo:</label>
+                <div class="col-sm-10 mb-2">
+                    <input class="form-control" type="text" name="tipo" id="tipo"
+                        placeholder="Insira o tipo (esportivo, classico)" [(ngModel)]="veiculoDTO.tipo" required>
+
+                    <div class="valid-feedback">Campo válido.</div>
+                    <div class="invalid-feedback">Por favor, preencha este campo.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-success" [disabled]="form.form.invalid">Gravar</button>
+            <button type="button" class="btn btn-danger" (click)="modal.close()">Cancelar</button>
+
+        </div>
+    </form>
+</ng-template>

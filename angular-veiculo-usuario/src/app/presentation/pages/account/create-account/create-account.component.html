@@ -1,0 +1,37 @@
+<h2 class="text-center">Criar minha conta</h2>
+
+<form (ngSubmit)="onSubmit()" #form="ngForm"  class="was-validated"> 
+    <div class="form-group">
+        <label>Username:</label>
+        <input class="form-control" type="text" name="username" id="username" [(ngModel)]="createAccount.nome" required />
+        <div class="invalid-feedback">Por favor, preencha este campo.</div>
+    </div>
+    <div class="form-group">
+        <label>Email:</label>
+        <input class="form-control" type="email" name="email" id="email" [(ngModel)]="createAccount.email" required />
+        <div class="invalid-feedback">Por favor, preencha este campo.</div>
+    </div>
+    <div class="form-group">
+        <label>Login:</label>
+        <input class="form-control" type="text" name="login" id="login" [(ngModel)]="createAccount.login" required />
+        <div class="invalid-feedback">Por favor, preencha este campo.</div>
+        <div class="valid-feedback">Atenção! Este campo será usado para efetuar o login, anote-o.</div>
+    </div>
+    <div class="form-group">
+        <label>Password:</label>
+        <input class="form-control" type="password" name="password" id="password" autocomplete="on" [(ngModel)]="createAccount.senha" required />
+        <div class="invalid-feedback">Por favor, preencha este campo.</div>
+    </div>
+    <div class="form-group">
+        <label>Confirm password:</label>
+        <input class="form-control" type="password" name="passwordConfirm" id="passwordConfirm" autocomplete="on" [(ngModel)]="createAccount.senhaConfirmacao" required />
+        <div class="invalid-feedback">Por favor, preencha este campo.</div>
+    </div>
+    
+    <div *ngIf="alertErro" class="alert alert-danger mt-3">
+        {{messagem}}
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-block" [disabled]="form.form.invalid">Criar minha conta</button>
+    <button type="button" class="btn btn-link btn-block" [routerLink]="['/login']">Realizar login</button>
+</form>
